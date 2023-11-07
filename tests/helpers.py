@@ -163,3 +163,6 @@ def wait_for_trial_component(sagemaker_client, training_job_name=None, trial_com
             except sagemaker_client.exceptions.ResourceNotFound:
                 logging.info("Trial component %s not created yet.", trial_component_name)
                 time.sleep(5)
+
+def delete_logged_artifact(sagemaker_boto3_client, artifact_arn):
+    sagemaker_boto3_client.delete_artifact(ArtifactArn=artifact_arn)
